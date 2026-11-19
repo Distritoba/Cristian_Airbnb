@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cristian · Proyección Airbnb · Distrito BA</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bakbak+One&family=Inter:wght@300;400;500;600&display=swap');
+:root{--green:#2E5634;--green-dark:#1e3b22;--cream:#F2EFEB;--gold:#C9A84C}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:#222;line-height:1.6}
+nav{position:sticky;top:0;z-index:10;background:rgba(46,86,52,.92);backdrop-filter:blur(8px);color:#fff;display:flex;justify-content:space-between;align-items:center;padding:14px 5vw}
+nav .logo{font-family:'Bakbak One',sans-serif;font-size:1.3rem;letter-spacing:.5px}
+nav a{color:#fff;text-decoration:none;margin-left:20px;font-size:.85rem;opacity:.85}
+nav a:hover{opacity:1;color:var(--gold)}
+.hero{background:linear-gradient(135deg,var(--green-dark),var(--green));color:#fff;padding:80px 5vw 70px;text-align:center}
+.hero-title{font-family:'Bakbak One',sans-serif;font-size:clamp(1.8rem,5vw,3.2rem);line-height:1.15}
+.hero-subtitle{opacity:.8;margin-top:10px;font-weight:300}
+.hero-stats{display:flex;flex-wrap:wrap;gap:28px;justify-content:center;margin-top:44px}
+.stat{background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.4);border-radius:14px;padding:22px 34px;min-width:200px}
+.stat-value{display:block;font-family:'Bakbak One',sans-serif;font-size:2.2rem;color:var(--gold)}
+.stat-label{font-size:.8rem;text-transform:uppercase;letter-spacing:1px;opacity:.8}
+section.block{max-width:1050px;margin:0 auto;padding:64px 5vw 10px}
+.section-tag{color:var(--gold);font-weight:600;font-size:.8rem;letter-spacing:1.5px;text-transform:uppercase}
+h2{font-family:'Bakbak One',sans-serif;color:var(--green);font-size:2rem;margin:4px 0 16px}
+p{margin-bottom:12px}
+.card{background:#fff;border-radius:14px;padding:26px;box-shadow:0 2px 14px rgba(0,0,0,.05)}
+.amenities-grid{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px}
+.amenity{background:#fff;border:1px solid var(--gold);border-radius:30px;padding:10px 20px;font-weight:500;color:var(--green)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:18px 0}
+.fact{background:#fff;border-radius:12px;padding:14px 16px}
+.fact b{display:block;font-family:'Bakbak One',sans-serif;color:var(--green);font-size:1.25rem}
+.fact span{font-size:.78rem;color:#777;text-transform:uppercase;letter-spacing:.8px}
+table{border-collapse:collapse;width:100%;background:#fff;border-radius:12px;overflow:hidden}
+th{background:var(--green);color:#fff;padding:10px 12px;font-size:.85rem;text-align:left}
+td{padding:9px 12px;border-bottom:1px solid #eee;font-size:.9rem}
+.market-table td:nth-child(n+3),.monthly-table td:nth-child(n+2),.monthly-table th:nth-child(n+2){text-align:right}
+.pl-table{border-collapse:collapse;width:100%;min-width:640px;background:#fff}
+.pl-table th{text-align:right}.pl-table th:first-child{text-align:left}.pl-table td{text-align:right}.pl-table td:first-child{text-align:left}
+.pl-table tr.pl-sub td{font-weight:600;border-top:1px solid #bbb}
+.pl-table tr.pl-final td{background:#E8F5E9;color:var(--green);font-weight:700;border-top:2px solid var(--green)}
+.pl-table tr.pl-pct td{color:#777;font-style:italic}
+.monthly-table th,.monthly-table td{white-space:nowrap}
+.monthly-table tr.total td{background:var(--gold);color:#fff;font-weight:700}
+.note{font-size:.8rem;color:#777;margin-top:8px}
+.heatmap-wrapper{overflow-x:auto;background:#fff;border-radius:12px;padding:14px}
+.heatmap{border-collapse:separate;border-spacing:3px;width:100%;min-width:640px;background:transparent}
+.heatmap th{border-radius:6px;text-align:center}
+.heatmap td{text-align:center;border-radius:6px;padding:10px 4px;font-size:.85rem;border:none;font-weight:500}
+.heatmap td.star{background:var(--gold)!important;color:#fff!important;font-weight:700;outline:2px solid var(--green-dark)}
+.chart-box{background:#fff;border-radius:14px;padding:20px;margin:24px 0;height:340px}
+.strategy{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.strategy-item{background:#fff;border-left:4px solid var(--gold);border-radius:10px;padding:18px 20px}
+.strategy-item h4{color:var(--green);margin-bottom:6px}
+.strategy-item p{font-size:.92rem;margin:0}
+footer{margin-top:70px;background:var(--green-dark);color:#fff;text-align:center;padding:28px 5vw;font-size:.85rem}
+footer b{font-family:'Bakbak One',sans-serif;font-weight:400;font-size:1.1rem}
+</style>
+</head>
+<body>
+<nav><span class="logo">Distrito BA</span><div><a href="#depto">El depto</a><a href="#mercado">Mercado</a><a href="#heatmap">Mapa de calor</a><a href="#resultados">Estado de resultados</a><a href="#proyeccion">Proyección</a><a href="#estrategia">Estrategia</a></div></nav>
+
+<section class="hero">
+  <h1 class="hero-title">Paraguay y Av. Scalabrini Ortiz · Palermo</h1>
+  <p class="hero-subtitle">Proyección de ingresos Airbnb para Cristian · Distrito BA</p>
+  <div class="hero-stats">
+    <div class="stat" data-count="80" data-prefix="$" data-suffix="/n"><span class="stat-value">$0/n</span><span class="stat-label">Precio base</span></div>
+    <div class="stat" data-count="80" data-suffix="%"><span class="stat-value">0%</span><span class="stat-label">Ocupación estimada</span></div>
+    <div class="stat" data-count="948" data-prefix="$" data-suffix="/mes"><span class="stat-value">$0/mes</span><span class="stat-label">Neto mensual del propietario</span></div>
+  </div>
+</section>
+
+<section class="block" id="depto">
+  <p class="section-tag">01 · El Depto</p>
+  <h2>El departamento</h2>
+  <p>Departamento en Palermo, en la intersección de Paraguay y Av. Scalabrini Ortiz, con capacidad para 3 huéspedes. Combina dos amenities que el mercado de la zona valora: piscina y seguridad las 24 horas.</p>
+  <div class="facts">
+    <div class="fact"><b>3</b><span>Huéspedes</span></div>
+    <div class="fact"><b>Palermo</b><span>Barrio</span></div>
+    <div class="fact"><b>USD 350</b><span>Expensas / mes</span></div>
+    <div class="fact"><b>20%</b><span>Gestión Distrito BA</span></div>
+    <div class="fact"><b>USD 45</b><span>Limpieza (paga el huésped)</span></div>
+  </div>
+  <div class="amenities-grid">
+    <div class="amenity">🏊 Piscina</div>
+    <div class="amenity">🛡️ Seguridad 24hs</div>
+  </div>
+</section>
+
+<section class="block" id="mercado">
+  <p class="section-tag">02 · Mercado</p>
+  <h2>Qué pasa hoy en la zona</h2>
+  <div class="card">
+    <p><b>841 anuncios</b> en el mapa para 3 huéspedes, 3 noches (14–17 dic) · <b>758</b> para 7 noches (14–21 dic). Relevado el 19/11/2026 en una zona de unos 2 × 2 km alrededor de Scalabrini Ortiz y Paraguay.</p>
+    <p>Precio por noche, sobre los primeros 20 resultados de cada búsqueda (total mostrado por Airbnb ÷ noches):</p>
+    <table class="market-table" style="margin:10px 0">
+      <thead><tr><th>Estadía</th><th>P25</th><th>Mediana</th><th>P75</th><th>Rango</th></tr></thead>
+      <tbody>
+        <tr><td>3 noches</td><td>$79</td><td><b>$88</b></td><td>$96</td><td>$56–$118</td></tr>
+        <tr><td>7 noches</td><td>$56</td><td><b>$68</b></td><td>$77</td><td>$53–$94</td></tr>
+      </tbody>
+    </table>
+    <p>Diferencia implícita entre 3 y 7 noches: <b>~23%</b> menos por noche. Ojo: incluye el efecto de repartir la tarifa de limpieza en más noches, así que no es solo descuento semanal.</p>
+    <p class="note">Benchmarks de barrio (todas las tipologías): AirDNA Palermo, ADR USD 54 y ocupación 71% (últimos 12 meses) · Guestfavorites Palermo, ADR USD 63 y ocupación 72% (junio 2026) · Airbtics Buenos Aires, ocupación 73% y ADR USD 60 (octubre 2026).</p>
+  </div>
+  <h3 style="margin:26px 0 10px;color:#2E5634">Comparables relevantes (3 huéspedes · con piscina y otros)</h3>
+  <table class="market-table">
+    <thead><tr><th>Alojamiento</th><th>Tipo</th><th>Precio/n</th><th>Stars</th></tr></thead>
+    <tbody>
+      <tr><td>Acogedor 2 ambientes con pileta y balcón</td><td>1 dorm · pileta</td><td>$107 (3n) · $94 (7n)</td><td>4,95 (22)</td></tr>
+      <tr><td>Vida de lujo con piscina en la azotea · Soho</td><td>1 dorm · pileta</td><td>$87 (7n)</td><td>4,74 (135)</td></tr>
+      <tr><td>Palermo Soho para 4 | La Rural y pileta</td><td>1 dorm · pileta</td><td>$94 (3n)</td><td>4,90 (10)</td></tr>
+      <tr><td>Alojamiento con piscina en Palermo · Gascón II</td><td>1 dorm · pileta</td><td>$56 (7n)</td><td>Nuevo</td></tr>
+      <tr><td>Premium Palermo Soho para 3/4 personas</td><td>1 dorm · complejo</td><td>$87 (3n)</td><td>4,78 (65)</td></tr>
+      <tr><td>Depto a nuevo zona Botánico, 3 personas</td><td>1 dorm</td><td>$58 (7n)</td><td>4,97 (112)</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Precios totales mostrados por Airbnb (incluyen tarifas), por lo que están por encima de lo que cobra el anfitrión por noche. Las fechas son de mediados de diciembre, época de demanda alta.</p>
+  <p style="margin-top:14px"><b>Posicionamiento:</b> los comparables con pileta se ubican entre $56 y $107 por noche con tarifas incluidas, y el mercado general en torno a USD 54–63 de ADR anual. Partimos de un precio base de <b>USD 80/noche</b> para el anfitrión: alrededor de un 25% por encima del ADR anual del barrio por la combinación de piscina y seguridad, y por debajo de los precios de temporada alta que muestra el buscador. El conservador es $66 y el optimista $92. La ocupación base es del <b>80%</b>, por encima del 71–73% promedio del barrio: supone gestión profesional y pricing dinámico; el conservador (70%) se acerca al promedio.</p>
+</section>
+
+<section class="block" id="heatmap">
+  <p class="section-tag">03 · Mapa de calor</p>
+  <h2>¿Cuánto podés ganar?</h2>
+  <p class="heatmap-desc">Neto mensual del propietario (USD) · Precio por noche × Ocupación, ya descontadas la comisión de Airbnb (15,5%), la gestión de Distrito BA (20%) y las expensas de USD 350. La celda ★ es el escenario base.</p>
+  <div class="heatmap-wrapper"><table class="heatmap" id="heatmapTable"></table></div>
+  <p class="note">Los valores negativos o cercanos a cero indican que el alquiler no cubre las expensas.</p>
+</section>
+
+<section class="block" id="resultados">
+  <p class="section-tag">04 · Estado de resultados</p>
+  <h2>Estado de resultados del propietario</h2>
+  <p>De cada dólar que paga el huésped por el alojamiento, esto es lo que llega al bolsillo de Cristian después de la comisión de Airbnb, la gestión de Distrito BA y las expensas.</p>
+  <div class="heatmap-wrapper"><table class="pl-table" id="plTable"></table></div>
+  <p class="note">Gestión: 20% sobre los ingresos por alojamiento netos de la comisión de Airbnb. Anual = mensual × 12 (los factores de estacionalidad suman 12).</p>
+  <div class="card" style="margin-top:16px"><p style="margin:0"><b>Tarifa de limpieza (USD 45 por estadía):</b> la paga el huésped y la retiene el administrador para cubrir la limpieza. No es ingreso ni costo del propietario, por eso no aparece en el estado de resultados.</p></div>
+</section>
+
+<section class="block" id="proyeccion">
+  <p class="section-tag">05 · Proyección 12M</p>
+  <h2>Un año en el escenario base</h2>
+  <div class="heatmap-wrapper"><table class="monthly-table">
+    <thead><tr><th>Mes</th><th>Factor</th><th>Bruto</th><th>(−) Comisión Airbnb</th><th>(−) Gestión</th><th>(−) Expensas</th><th>Neto propietario</th><th>Neto sin PM</th></tr></thead>
+    <tbody id="monthlyBody"></tbody>
+  </table></div>
+  <p class="note">Estacionalidad: factores por mes que suman 12. Neto propietario = bruto × (1 − 15,5%) × (1 − 20%) − expensas de USD 350. "Neto sin PM" es solo de referencia (sin el fee de gestión).</p>
+  <div class="chart-box"><canvas id="annualChart"></canvas></div>
+  <p class="note">Valores anuales por escenario: bruto, neto sin PM (referencia) y neto del propietario con la gestión de Distrito BA.</p>
+</section>
+
+<section class="block" id="estrategia">
+  <p class="section-tag">06 · Estrategia</p>
+  <h2>Cómo sacarle el máximo</h2>
+  <div class="strategy">
+    <div class="strategy-item"><h4>🏊 Piscina y seguridad como protagonistas</h4><p>Son los dos diferenciadores del depto: llevarlos a las primeras fotos y al título del anuncio. Varios comparables de la zona con pileta se ubican en la parte alta del rango de precios.</p></div>
+    <div class="strategy-item"><h4>📅 Temporada alta</h4><p>Enero, febrero, julio, noviembre y diciembre tienen demanda 10–15% por encima del promedio: ahí conviene sostener precio y mínimo de noches.</p></div>
+    <div class="strategy-item"><h4>💸 Las expensas pesan</h4><p>Con USD 350 al mes, y después de la comisión de Airbnb y la gestión, el depto necesita unas 7 noches ocupadas por mes (a USD 80) solo para cubrirlas. Cada punto de ocupación y cada dólar de precio impactan fuerte en el neto, como se ve en el mapa de calor.</p></div>
+    <div class="strategy-item"><h4>🔄 Pricing dinámico y descuentos</h4><p>Ajustar precio según anticipación y usar descuentos por estadías largas y de último momento en meses flojos (mayo–junio, agosto–octubre), en lugar de bajar el precio base todo el año.</p></div>
+    <div class="strategy-item"><h4>🗓️ Plan B en temporada baja</h4><p>Si la ocupación cae por debajo del 65%, evaluar estadías de 1 a 3 meses en esos meses para cubrir las expensas con ingresos más estables.</p></div>
+    <div class="strategy-item"><h4>🤝 Gestión Distrito BA</h4><p>La proyección incluye el fee de gestión del 20%. La operación, la comunicación con huéspedes y la limpieza quedan a cargo del administrador, que retiene la tarifa de limpieza de USD 45 que paga cada huésped.</p></div>
+  </div>
+</section>
+
+<footer><b>Distrito BA</b><br>Proyección elaborada el 19/11/2026 · Datos de mercado relevados ese día (vigencia ~30 días). Estimación orientativa, no garantiza resultados.</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+const fmt=n=>Math.round(n).toLocaleString('es-AR');
+const COM=0.155, EXP=350;
+const BASE={price:80,occ:0.80};
+const SCEN=[{n:'Conservador',price:66,occ:0.70},{n:'Base',price:80,occ:0.80},{n:'Optimista',price:92,occ:0.90}];
+const PM=0.20, CLEAN=45;
+const net=(p,o)=>p*30*o*(1-COM)*(1-PM)-EXP;
+const netSinPM=(p,o)=>p*30*o*(1-COM)-EXP;
+
+// counters
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;io.unobserve(e.target);
+  const el=e.target,end=+el.dataset.count,pre=el.dataset.prefix||'',suf=el.dataset.suffix||'';
+  const out=el.querySelector('.stat-value');let t0=null;
+  const step=ts=>{if(!t0)t0=ts;const k=Math.min(1,(ts-t0)/1400);out.textContent=pre+fmt(end*k)+suf;if(k<1)requestAnimationFrame(step)};
+  requestAnimationFrame(step);
+}),{threshold:.4});
+document.querySelectorAll('.stat').forEach(s=>io.observe(s));
+
+// heatmap
+function heatColor(v,min,max){const r=Math.max(0,Math.min(1,(v-min)/(max-min)));
+  return `rgb(${Math.round(255-r*(255-46))},${Math.round(255-r*(255-86))},${Math.round(255-r*(255-52))})`}
+(function(){
+  const prices=[55,60,66,72,80,86,92,100,110], occs=[.65,.70,.75,.80,.85,.90,.95];
+  const vals=occs.flatMap(o=>prices.map(p=>net(p,o)));
+  const min=Math.min(...vals),max=Math.max(...vals);
+  let h='<thead><tr><th>Occ \\ Precio</th>'+prices.map(p=>`<th>$${p}</th>`).join('')+'</tr></thead><tbody>';
+  occs.forEach(o=>{h+=`<tr><th>${Math.round(o*100)}%</th>`;
+    prices.forEach(p=>{const v=net(p,o),star=(p===BASE.price&&Math.abs(o-BASE.occ)<1e-9);
+      const r=(v-min)/(max-min);
+      h+=`<td class="${star?'star':''}" style="background:${heatColor(v,min,max)};color:${r>.5?'#fff':'#222'}">${star?'★ ':''}$${fmt(v)}</td>`});
+    h+='</tr>'});
+  document.getElementById('heatmapTable').innerHTML=h+'</tbody>';
+})();
+
+// estado de resultados
+(function(){
+  const lines=[['Ingresos por alojamiento (bruto)',s=>s.g,0],['(−) Comisión Airbnb',s=>-s.g*COM,0],['Ingresos netos de Airbnb',s=>s.g*(1-COM),1],
+    ['(−) Gestión Distrito BA (20%)',s=>-s.g*(1-COM)*PM,0],['Resultado antes de expensas',s=>s.g*(1-COM)*(1-PM),1],['(−) Expensas',s=>-EXP,0],
+    ['Resultado neto del propietario',s=>s.g*(1-COM)*(1-PM)-EXP,2]];
+  const sc=SCEN.map(s=>({n:s.n,g:s.price*30*s.occ}));
+  const f=v=>(v<0?'(':'')+'$'+fmt(Math.abs(v))+(v<0?')':'');
+  let h='<thead><tr><th rowspan="2" style="text-align:left">Concepto</th><th colspan="3">Mensual (promedio)</th><th colspan="3">Anual (12 meses)</th></tr><tr>'+
+    [...sc,...sc].map(s=>`<th>${s.n}</th>`).join('')+'</tr></thead><tbody>';
+  lines.forEach(([l,fn,t])=>{
+    const cls=t==2?'pl-final':(t==1?'pl-sub':'');
+    h+=`<tr class="${cls}"><td>${l}</td>`+sc.map(s=>`<td>${f(fn(s))}</td>`).join('')+sc.map(s=>`<td>${f(fn(s)*12)}</td>`).join('')+'</tr>';
+  });
+  h+='<tr class="pl-pct"><td>Margen neto sobre bruto</td>'+[...sc,...sc].map(s=>`<td>${(((s.g*(1-COM)*(1-PM)-EXP)/s.g)*100).toFixed(1).replace('.',',')}%</td>`).join('')+'</tr>';
+  document.getElementById('plTable').innerHTML=h+'</tbody>';
+})();
+
+// monthly table
+const MESES=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+const FACT=[1.10,1.15,1.05,0.95,0.85,0.85,1.10,0.90,0.90,0.90,1.10,1.15];
+(function(){
+  const g=BASE.price*30*BASE.occ;const T=[0,0,0,0,0,0];let rows='';
+  const f=v=>(v<0?'(':'')+'$'+fmt(Math.abs(v))+(v<0?')':'');
+  MESES.forEach((m,i)=>{const b=g*FACT[i],c=-b*COM,pm=-(b+c)*PM,e=-EXP,n=b+c+pm+e,sp=b+c+e;
+    [b,c,pm,e,n,sp].forEach((v,k)=>T[k]+=v);
+    rows+=`<tr><td>${m}</td><td>${FACT[i].toFixed(2).replace('.',',')}</td><td>${f(b)}</td><td>${f(c)}</td><td>${f(pm)}</td><td>${f(e)}</td><td><b>${f(n)}</b></td><td>${f(sp)}</td></tr>`});
+  rows+=`<tr class="total"><td>TOTAL</td><td>12,00</td>${T.map(v=>`<td>${f(v)}</td>`).join('')}</tr>`;
+  document.getElementById('monthlyBody').innerHTML=rows;
+})();
+
+// annual chart (sin PM: 2 datasets)
+new Chart(document.getElementById('annualChart'),{type:'bar',
+  data:{labels:SCEN.map(s=>s.n),datasets:[
+    {label:'Bruto anual',data:SCEN.map(s=>s.price*30*s.occ*12),backgroundColor:'#9CC5E8'},
+    {label:'Neto anual sin PM (referencia)',data:SCEN.map(s=>netSinPM(s.price,s.occ)*12),backgroundColor:'#2E5634'},
+    {label:'Neto anual propietario (con gestión)',data:SCEN.map(s=>net(s.price,s.occ)*12),backgroundColor:'#C9A84C'}]},
+  options:{indexAxis:'x',responsive:true,maintainAspectRatio:false,
+    plugins:{tooltip:{callbacks:{label:c=>`${c.dataset.label}: $${fmt(c.parsed.y)}`}}},
+    scales:{y:{beginAtZero:true,ticks:{callback:v=>'$'+fmt(v)}}}}});
+</script>
+</body>
+</html>
